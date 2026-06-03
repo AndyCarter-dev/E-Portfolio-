@@ -7,6 +7,10 @@
     font-family: 'Roboto', sans-serif;
 }
 
+html{
+    scroll-behavior: smooth;
+}
+
 a{
     text-decoration: none;
 }
@@ -49,8 +53,11 @@ input:focus, textarea:focus{
     transition: all 300ms ease;
 }
 
+
+
 section{
     background-color: rgb(245, 245, 245);
+    transition: all 300ms ease ;
 }
 
 button{
@@ -127,6 +134,49 @@ p{
     width: 100%;
 }
 
+ nav,
+ .scroll,
+ header{
+    opacity: 1;
+    visibility: visible;
+    transition: all 600ms 800ms ;
+}
+.modal__open nav,
+.modal__open .scroll,
+.modal__open header{
+    opacity: 0;
+    visibility: hidden;
+    transition: all 400ms;
+}
+
+.dark-theme .title,
+.dark-theme .section__title,
+.dark-theme .nav__link--anchor,
+.dark-theme .fa-adjust,
+.dark-theme .header__para {
+    color: white
+}
+
+
+.dark-theme section{
+    background-color: #242424;
+}
+
+.dark-theme .scroll__icon{
+    border-color: white;
+}
+
+.dark-theme .scroll__icon:after,
+.dark-theme .link__hover-effect--black:after
+{
+    background-color: white;
+}
+
+.dark-theme .mail__btn{
+    background-color: white;
+    color: black;
+}
+
 /* 
 
 landing page 
@@ -135,6 +185,11 @@ landing page
 
 #Landing-page{
     min-height: 100vh;
+}
+
+.subtitle{
+    font-size: 80px;
+
 }
 
 header{
@@ -182,6 +237,9 @@ header{
     position: absolute;
     bottom: 32px;
     right: 40px;
+    z-index: 100;
+    position: fixed;
+    box-shadow: 0 12px 30px 0 rgb(0, 0, 0, 0.2);
 
 }
 
@@ -285,7 +343,20 @@ modal
     overflow: hidden;
     box-shadow: 0 20px 80px 0 rgba(0, 0, 0, 0.55);
     display: flex;
+    visibility: hidden;
+    transition: visibility .01s, z-index 1s, box-shadow 0.5s ease;
 
+}
+
+.modal__open .modal{
+    z-index: 50;
+    box-shadow: 0 20px 80px 0 rgba(0, 0, 0, 0.55);
+    visibility: visible;
+}
+
+.modal__open .modal__about,
+.modal__open .modal__contact{
+    transform: translateX(0%);
 }
 
 .modal__half{
@@ -295,10 +366,12 @@ modal
     display: flex;
     flex-direction: column;
     position: relative;
+    transition: all 300ms ease ;
 }
 
 .modal__about{
     background-color: white;
+    transform: translateX(-110%);
     
 }
 
@@ -344,6 +417,7 @@ modal
 .modal__contact{
     background-color: #242424;
     color: white;
+    transform: translateX(110%);
 }
 
 .modal__title{
@@ -393,7 +467,7 @@ modal
     left: 0;
     width: 100%;
     height: 100%;
-    display: flex;
+    display: none;
     justify-content: center;
     align-items: center;
     
@@ -439,6 +513,7 @@ modal
 
 .modal__overlay--visible{
     z-index: 1;
+    display: flex;
 }
 
 
@@ -542,6 +617,7 @@ footer{
     background-color: #242424;
     display: flex;
     padding: 6% 0%;
+    position: relative;
 
 }
 
@@ -579,3 +655,126 @@ a.footer__social--link{
 .footer_para{
     color: white;
 }
+
+/* 
+
+shape
+ 
+*/
+
+.shape{
+    position: fixed;
+}
+
+.shape--0{
+    top: 15vh;
+    left: 5vw
+}
+
+.shape--1{
+    top: 15vh;
+    left: 50vw
+}
+
+.shape--2{
+    top: 15vh;
+    left: 80vw
+}
+
+.shape--3{
+    top: 50vh;
+    left: 5vw
+}
+
+.shape--4{
+    top: 50vh;
+    left: 50vw
+}
+
+.shape--5{
+    top: 50vh;
+    left: 80vw
+}
+
+.shape--6{
+    top: 80vh;
+    left: 5vw
+}
+
+.shape--7{
+    top: 80vh;
+    left: 50vw
+}
+
+.shape--8{
+    top: 80vh;
+    left: 80vw
+}
+
+/* smart phones, tablets, large smart phones  */
+
+@media (max-width: 768px){
+    .title{
+        font-size: 80px;
+    }
+
+    .subtitle{
+        font-size: 60px;
+    }
+    .header__content{
+        padding-left: 8px;
+    }
+    .header__para{
+        font-size: 20px;
+    }
+    .modal{
+        top: 0;
+        left: 0;
+        height: auto;
+        transform: none;
+        width: 100%;
+        flex-direction: column-reverse;
+        border-radius: 0;
+    }
+   .modal__half{
+        width: 100%;
+        }
+
+    .project__description{
+        left: 0;
+        padding-left: 40px;
+        width: 100%;
+        text-align: center;
+    }
+ }
+
+ /* small phones */
+
+ @media (max-width: 496px) { 
+    .title{
+        font-size: 52px;
+    }
+    .header__para{
+        font-size: 18px;
+    }
+    .nav__link:first-child{
+        display: none;
+    }
+    .project__description--para{
+        display: none;
+    }
+
+    .project__description{
+        left: 0;
+        padding: 0;
+        width: 100%;
+        text-align: center;
+    }
+    .project__description--subtitle{
+        margin-bottom: 8px;
+    }
+    .shape{
+        display: none;
+    }
+
+ }
